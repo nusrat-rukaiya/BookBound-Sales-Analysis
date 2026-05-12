@@ -58,3 +58,42 @@ WHERE stock IN (
 | "Future-proofed heuristic function"           | 0     |
 | "Stand-alone zero administration emulation"   | 100   |
 
+-- Total number of books sold for each genre.
+SELECT 
+    b.genre,
+    SUM(o.quantity) AS total_books_sold
+FROM books AS b
+JOIN orders AS o
+    ON b.book_id = o.book_id
+GROUP BY b.genre
+ORDER BY total_books_sold DESC;
+
+| Genre             | Total Books Sold|
+| ----------------- | ----------------|
+| Mystery           | 504             |
+| Science Fiction   | 447             |
+| Fantasy           | 446             |
+| Romance           | 439             |
+| Non-Fiction       | 351             |
+| Biography         | 285             |
+| Fiction           | 225             |
+
+--The book that sold the most along with its author.
+
+SELECT 
+    'Top Book' AS type,
+    b.title AS name,
+    b.author,
+    SUM(o.quantity) AS total_sold
+FROM books b
+JOIN orders o
+    ON b.book_id = o.book_id
+GROUP BY b.book_id, b.title, b.author
+ORDER BY total_sold DESC
+LIMIT 1;
+
+| Type     | Name                                   | Author              | Total Sold |
+| -------- | -------------------------------------- | ------------------- | ---------- |
+| Top Book | "Realigned multi-tasking installation" | "Patrick Contreras" | 150  |      
+
+
