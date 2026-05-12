@@ -94,6 +94,6 @@ LIMIT 1;
 
 | Type     | Name                                   | Author              | Total Sold |
 | -------- | -------------------------------------- | ------------------- | ---------- |
-| Top Book | "Realigned multi-tasking installation" | "Patrick Contreras" | 150  |      
+| Top Book | "Realigned multi-tasking installation" | "Patrick Contreras" | 150        |      
 
 
