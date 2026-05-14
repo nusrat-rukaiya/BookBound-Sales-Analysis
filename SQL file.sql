@@ -97,3 +97,43 @@ LIMIT 1;
 | Top Book | "Realigned multi-tasking installation" | "Patrick Contreras" | 150        |      
 
 
+--Books received the highest number of orders
+
+SELECT 
+    b.book_id,
+    b.title,
+    COUNT(o.order_id) AS counted_order
+FROM orders AS o
+JOIN books AS b
+    ON o.book_id = b.book_id
+GROUP BY b.book_id, b.title
+ORDER BY counted_order DESC LIMIT 7;
+
+| Book ID | Title                                             | Counted Order |
+| ------- | --------------------------------------------------| ------------- |   
+| 73      | Realigned multi-tasking installation              | 4             |
+| 31      | Implemented encompassing conglomeration           | 4             |
+| 491     | Pre-emptive intangible adapter                    | 4             |
+| 120     | Integrated secondary access                       | 4             |
+| 273     | Devolved zero administration process improvement  | 4             |
+| 88      | Robust tangible hardware                          | 4             |
+| 333     | Advanced responsive extranet                      | 4             |
+
+
+
+--The customer who spent the most on orders
+SELECT 
+    c.customer_id,
+    c.name,
+    SUM(o.total_amount) AS total_spent
+FROM customers AS c
+JOIN orders AS o
+    ON c.customer_id = o.customer_id
+GROUP BY c.customer_id, c.name
+ORDER BY total_spent DESC
+LIMIT 1;
+
+| Customer ID | Name              | Total Spent |
+| ----------- | ----------------- | ----------- |
+| 457         | Kim Turner        | 1398.90     |
+
