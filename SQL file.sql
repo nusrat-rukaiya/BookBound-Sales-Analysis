@@ -177,3 +177,23 @@ SELECT * FROM GenreRanking WHERE rank <= 3;
 | Science Fiction | Re-contextualized real-time Graphic Interface    | 23       | 1    |
 | Science Fiction | Phased context-sensitive task-force              | 22       | 2    |
 | Science Fiction | Triple-buffered neutral adapter                  | 21       | 3    |
+
+--Running Total of Revenue per Customer
+SELECT 
+    customer_id,
+    order_id,
+    total_amount,
+    SUM(total_amount) OVER (PARTITION BY customer_id ORDER BY order_id) AS running_total
+FROM orders;
+
+/* Sample Output (First 5 rows):
+| Customer ID | Order ID | Total Amount | Running Total |
+| ----------- | -------- | ------------ | ------------- |   
+| 2           | 347      | 16.56        | 16.56         |
+| 2           | 482      | 298.06       | 314.62        |
+| 6           | 47       | 148.02       | 148.02        |
+| 6           | 288      | 24.04        | 172.06        |
+| 7           | 110      | 10.07        | 10.07         |
+
+... (truncated for readability)
+*/
