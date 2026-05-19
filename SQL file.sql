@@ -137,3 +137,43 @@ LIMIT 1;
 | ----------- | ----------------- | ----------- |
 | 457         | Kim Turner        | 1398.90     |
 
+--Top 3 Best-Selling Books per Genre
+WITH GenreRanking AS (
+    SELECT 
+        b.genre,
+        b.title,
+        SUM(o.quantity) AS total_sold,
+        DENSE_RANK() OVER (PARTITION BY b.genre ORDER BY SUM(o.quantity) DESC) AS rank
+    FROM books b
+    JOIN orders o ON b.book_id = o.book_id
+    GROUP BY b.genre, b.title
+)
+SELECT * FROM GenreRanking WHERE rank <= 3;
+
+| Genre           | Title                                            | Quantity | Rank |
+|-----------------|--------------------------------------------------|----------|------|
+| Biography       | Advanced didactic time-frame                     | 24       | 1    |
+| Biography       | Balanced dynamic project                         | 16       | 2    |
+| Biography       | Persevering tertiary product                     | 16       | 2    |
+| Biography       | Robust attitude-oriented attitude                | 15       | 3    |
+| Fantasy         | Synergized intangible methodology                | 23       | 1    |
+| Fantasy         | Pre-emptive intangible adapter                   | 20       | 2    |
+| Fantasy         | Grass-roots systematic moderator                 | 19       | 3    |
+| Fiction         | Implemented encompassing conglomeration          | 27       | 1    |
+| Fiction         | Multi-tiered responsive parallelism              | 22       | 2    |
+| Fiction         | Assimilated composite archive                    | 17       | 3    |
+| Fiction         | Reverse-engineered directional conglomeration    | 17       | 3    |
+| Mystery         | Realigned multi-tasking installation             | 28       | 1    |
+| Mystery         | Expanded local infrastructure                    | 23       | 2    |
+| Mystery         | Horizontal hybrid forecast                       | 20       | 3    |
+| Non-Fiction     | Integrated secondary access                      | 23       | 1    |
+| Non-Fiction     | Robust tangible hardware                         | 19       | 2    |
+| Non-Fiction     | Automated client-driven open architecture        | 17       | 3    |
+| Non-Fiction     | Stand-alone hybrid framework                     | 17       | 3    |
+| Romance         | Devolved zero administration process improvement | 24       | 1    |
+| Romance         | Cross-platform next generation website           | 21       | 2    |
+| Romance         | Switchable modular moratorium                    | 21       | 2    |
+| Romance         | Decentralized multi-tasking data-warehouse       | 17       | 3    |
+| Science Fiction | Re-contextualized real-time Graphic Interface    | 23       | 1    |
+| Science Fiction | Phased context-sensitive task-force              | 22       | 2    |
+| Science Fiction | Triple-buffered neutral adapter                  | 21       | 3    |
