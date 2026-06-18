@@ -55,6 +55,7 @@
     color: var(--text-primary);
     line-height: 1.7;
   }
+  a { text-decoration: none; }
   .wrap { max-width: 860px; margin: 0 auto; padding: 3rem 1.5rem; }
   h1 { font-size: 28px; font-weight: 600; margin-bottom: 6px; }
   h2 { font-size: 18px; font-weight: 600; margin: 2rem 0 0.75rem; }
@@ -70,7 +71,8 @@
   .badge.blue { background: var(--blue-bg); color: var(--blue-text); }
   .badge.teal { background: var(--teal-bg); color: var(--teal-text); }
   .badge.purple { background: var(--purple-bg); color: var(--purple-text); }
-  hr.divider { border: none; border-top: 0.5px solid var(--border); margin: 1.75rem 0; }
+  hr.divider { display: none; }
+  .section-gap { margin-top: 2rem; }
   .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 1rem 0; }
   .kpi-card { background: var(--bg-secondary); border-radius: var(--radius-md); padding: 1rem; }
   .kpi-card .label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
@@ -126,10 +128,11 @@
   .files-table th {
     text-align: left; font-weight: 600; font-size: 12px;
     color: var(--text-tertiary); padding: 6px 10px;
-    border-bottom: 0.5px solid var(--border);
   }
-  .files-table td { padding: 8px 10px; border-bottom: 0.5px solid var(--border); color: var(--text-secondary); }
+  .files-table td { padding: 8px 10px; color: var(--text-secondary); }
   .files-table td:first-child { font-family: 'Courier New', monospace; font-size: 13px; color: var(--text-primary); }
+  .files-table tr { background: transparent; }
+  .files-table tbody tr:nth-child(odd) { background: var(--bg-secondary); }
   .footer { font-size: 13px; color: var(--text-tertiary); text-align: center; padding-top: 1rem; font-style: italic; }
   @media (max-width: 600px) {
     .grid-2 { grid-template-columns: 1fr; }
@@ -156,7 +159,7 @@
 
   <hr class="divider">
 
-  <h2>What problem does it solve?</h2>
+  <h2 class="section-gap">What problem does it solve?</h2>
   <p>Without a dashboard, a business owner has to dig through raw spreadsheets to answer basic questions:</p>
   <div class="findings-grid" style="margin-top:0.75rem">
     <div class="finding"><i class="ti ti-currency-dollar"></i><p>How much did we <strong>earn this year?</strong></p></div>
@@ -168,13 +171,13 @@
 
   <hr class="divider">
 
-  <h2>How the data was processed</h2>
+  <h2 class="section-gap">How the data was processed</h2>
   <p>Before building the visuals, the data was cleaned and queried using <strong>SQL</strong>. This step made sure the numbers are accurate and consistent — no duplicates, no wrong totals, no missing values.</p>
   <p>After SQL confirmed the results, the clean data was loaded into <strong>Power BI</strong>, where DAX (a formula language inside Power BI) was used to calculate the key business metrics.</p>
 
   <hr class="divider">
 
-  <h2>The 4 key numbers (KPIs) at the top</h2>
+  <h2 class="section-gap">The 4 key numbers (KPIs) at the top</h2>
   <p>These four numbers tell you the health of the business at a glance.</p>
   <div class="kpi-grid">
     <div class="kpi-card blue">
@@ -202,7 +205,7 @@
 
   <hr class="divider">
 
-  <h2>The charts explained</h2>
+  <h2 class="section-gap">The charts explained</h2>
   <div class="grid-2">
     <div class="section-card">
       <h3><i class="ti ti-chart-line" style="font-size:16px;margin-right:6px;vertical-align:-2px"></i>Sales trends over time</h3>
@@ -218,7 +221,7 @@
 
   <hr class="divider">
 
-  <h2>The 3 tables explained</h2>
+  <h2 class="section-gap">The 3 tables explained</h2>
   <div class="section-card">
     <h3><i class="ti ti-trophy" style="font-size:16px;margin-right:6px;vertical-align:-2px;color:#854F0B"></i>Table 1 — Top customers (current year)</h3>
     <p>Lists the customers who spent the most money this year, ranked from highest to lowest. Useful for loyalty programs, exclusive offers, or simply acknowledging your best supporters.</p>
@@ -234,7 +237,7 @@
 
   <hr class="divider">
 
-  <h2>How to use this dashboard (for non-technical readers)</h2>
+  <h2 class="section-gap">How to use this dashboard (for non-technical readers)</h2>
   <ol class="steps">
     <li>Pick a year using the buttons at the top right (2022, 2023, 2024)</li>
     <li>Check the 4 KPI cards — are sales up or down from what you expected?</li>
@@ -246,7 +249,7 @@
 
   <hr class="divider">
 
-  <h2>Key findings</h2>
+  <h2 class="section-gap">Key findings</h2>
   <div class="findings-grid">
     <div class="finding"><i class="ti ti-currency-dollar"></i><p><strong>$75,628.66</strong> total revenue across <strong>500 orders</strong> from <strong>307 customers</strong></p></div>
     <div class="finding"><i class="ti ti-package"></i><p><strong>2,697 units</strong> sold in total across all titles</p></div>
@@ -258,7 +261,7 @@
 
   <hr class="divider">
 
-  <h2>Files in this project</h2>
+  <h2 class="section-gap">Files in this project</h2>
   <table class="files-table">
     <thead>
       <tr><th>File</th><th>Purpose</th></tr>
@@ -272,7 +275,7 @@
 
   <hr class="divider">
 
-  <h2>About this project</h2>
+  <h2 class="section-gap">About this project</h2>
   <p>This is a portfolio project built to demonstrate end-to-end data analytics skills:</p>
   <div class="findings-grid">
     <div class="finding"><i class="ti ti-database"></i><p><strong>Data validation</strong> with SQL</p></div>
@@ -283,7 +286,7 @@
   <p style="margin-top:0.75rem; font-size:13px; color:var(--text-tertiary)">The dataset simulates a real online bookstore operating in the e-commerce space. All customer names and book titles are fictional.</p>
 
   <hr class="divider">
-  <p class="footer">Built by a data analyst passionate about turning raw data into decisions that actually move a business forward.</p>
+  <p class="footer" style="margin-top:2rem">Built by a data analyst passionate about turning raw data into decisions that actually move a business forward.</p>
 
 </div>
 </body>
