@@ -16,7 +16,7 @@ The analysis was done in two steps:
 
 ## The Dashboard at a Glance
 
-![Book Sales Dashboard](Online_Bookstore_Dashboard.PNG)
+![Book Sales Dashboard](./image/1st.PNG)
 
 The report has one page with everything in one place:
 
